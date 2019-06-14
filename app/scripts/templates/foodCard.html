@@ -1,0 +1,10 @@
+<div class="food-card">
+    <img ng-src="{{recipe.image}}" ng-click="showDetails(recipe)"/>
+    <h4>{{recipe.name}}</h4>
+    <h4>{{recipe.price}}</h4>
+    <button ng-hide="recipe.count" ng-click="addToCart(recipe)">Add to Cart</button>
+    <div ng-show="recipe.count">
+        <button ng-click="removeItem(recipe)">- </button>{{recipe.count}}
+        <button ng-click="addItem(recipe)">+ </button>
+    </div>
+</div>

@@ -1,0 +1,20 @@
+<h4>Favourites
+    <span class="glyphicon">&#xe116;</span>
+    <span ng-show="main.cartQuantity.count">{{main.cartQuantity.count}}</span>
+</h4>
+<div class='favourites'>
+  <food-card ng-repeat="recipe in main.foodData.recipes | filter: {isFavourite: true}"
+  recipe='recipe'></food-card>
+</div>
+<span class='search'>&#128269;</span>
+<input placeholder="Search" type='text' ng-model="searchText"/>
+<div class='categories'>
+  <button ng-repeat="category in main.foodData.categories"
+   ng-class="{'selected': category.name == main.categorySelected }" ng-click="main.filterByCategory(category.name)">
+    <img ng-src="{{category.image}}"/>
+    <span>{{category.name}}</span>
+  </button>
+</div>
+<div class="food-list">
+    <food-card ng-repeat="recipe in main.foodData.recipes | filter:{category:main.categorySelected} | filter: searchText" recipe='recipe'></food-card>
+</div>
